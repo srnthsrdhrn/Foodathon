@@ -1,0 +1,77 @@
+<html>
+
+<head>
+    <title>
+        {% block title %} KCT Foodathon{% endblock %}
+
+    </title>
+    {{ form.media }}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load crispy_forms_tags %}
+    {% load staticfiles %}
+
+
+    {% block styling %}
+        <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet" type="text/css"/>
+
+        <link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css"/>
+        <style type="text/css">
+            textarea, textarea.form-control {
+                height: 150px;
+            }
+
+            h1, h2, h3 {
+                color: #d76c6c;
+            }
+
+            .dateinput {
+                position: relative;
+            }
+
+            .table-responsive {
+                overflow: visible !important
+            }
+
+
+        </style>
+
+    {% endblock %}
+
+    {% block extraHead %}
+
+    {% endblock %}
+
+
+</head>
+
+
+<body class="bgshade">
+<div class="container">
+
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+
+</div>
+
+
+{% block content %}
+
+        <h2>
+            <div style="text-align: center;">Recipe Entry Form</div>
+        </h2>
+
+    {% crispy form %}
+
+{% endblock %}
+
+{% block scripts %}
+
+    <script src="{% static "js/jquery.min.js" %}"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+
+{% endblock %}
+</body>
+
+
+</html>

@@ -1,0 +1,29 @@
+web:
+  restart: always
+  build: .
+  expose:
+    - "8000"
+  ports:
+    - "8002:8000"
+  env_file: production.env
+  links:
+    - postgres:postgres
+    - redis:redis
+  environment:
+    - DEBUG = true
+    - HTTPS_METHOD=noredirect
+    - VIRTUAL_HOST=food.iqube.io, food.iqube.space
+    - VIRTUAL_PORT=8000
+    - TZ=Asia/Kolkata
+  command: sh '/usr/src/app/run_web.sh'
+  volumes:
+      - mediadata:/usr/src/app/media/
+
+postgres:
+  restart: always
+  image: postgres:latest
+  env_file: production.env
+  ports:
+    - "5434:5432"
+  volumes:
+    - food-pgsql:/var/lib/postgresql/dev/data/
