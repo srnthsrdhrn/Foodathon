@@ -15,7 +15,6 @@ Markdown==2.6.9
 olefile==0.44
 paho-mqtt==1.2.3
 Pillow==4.2.1
-pypiwin32==219
 python-dateutil==2.6.0
 pytz==2017.2
 requests==2.17.3

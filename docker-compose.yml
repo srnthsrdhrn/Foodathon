@@ -8,7 +8,6 @@ web:
   env_file: production.env
   links:
     - postgres:postgres
-    - redis:redis
   environment:
     - DEBUG = true
     - HTTPS_METHOD=noredirect
